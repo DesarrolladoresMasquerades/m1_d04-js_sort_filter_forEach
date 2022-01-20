@@ -1,59 +1,68 @@
-// ONLY USE THE .sort() METHOD FOR THIS EXERCISE UNLESS MENTIONED
-
-//Exercise 1: Using the array (arrOfStrings), sort an array from shortest string to the longest.
-// DO NOT mutate the original array
-const arrOfStrings = ['cat', 'wolf', 'yo', 'animal'];
-
-const longestStr = (arr) => {
-   //your code...
-}
-
-let longestStrings = longestStr(arrOfStrings)
-console.log(longestStrings)
-
-//ANSWER should be ['yo', 'cat', 'wolf', 'animal']
-
-//Exercise 2: Using the same arr (arrOfStrings), sort its elements alphabetically.
-// DU NOT mutate the original array
+// **********************************************************************
+// 1: Sort an array from shortest string to the longest.
+// **********************************************************************
 
 const arrOfStrings = ['cat', 'wolf', 'yo', 'animal'];
 
-const sortedStr = (arr) => {
-   //your code...
-}
+const sortedByLength = [...arrOfStrings].sort((a, b) => {
+  return a.length - b.length
+});
 
-let sortedStrings = sortedStr(arrOfStrings)
-console.log(sortedStrings)
+// longer solution:
+// const sortedByLength = arrOfStrings.slice().sort((x, y) => {
+//  if (x.length < y.length) return -1;
+//  if (x.length > y.length) return 1;
+//  return 0;
+// })
 
-//ANSWER should be  ['animal', 'cat', 'wolf', 'yo']
+console.log(sortedByLength); // => [ 'yo', 'cat', 'wolf', 'animal' ]
+console.log(arrOfStrings); // => [ 'cat', 'wolf', 'yo', 'animal' ]
 
-// COMPLEX EXERCISE 3: Sort the  objects in the array by age in ascending order,
-// if the age is the same sort them alphabetically in descending order
-// Please do not mutate the original array
+
+// **********************************************************************
+// 2: Sort an array alphabetically.
+// **********************************************************************
+
+const sortedAlphabetically = [...arrOfStrings].sort((a, b) => a.localeCompare(b));
+
+// longer solution:
+// const sortedAlphabetically = arrOfStrings.slice().sort((x, y) => {
+//   if (x < y) return -1;
+//   if (x > y) return 1;
+//   return 0;
+// })
+
+console.log(sortedAlphabetically); // => [ 'animal', 'cat', 'wolf', 'yo' ]
+console.log(arrOfStrings); // => [ 'cat', 'wolf', 'yo', 'animal' ]
+
+
+// **********************************************************************
+// 3: Sort the objects in the array by age, in descending order.
+// **********************************************************************
 
 const people = [
   { name: 'Candice', age: 25 },
   { name: 'Tammy', age: 30 },
-  { name: 'Allen', age: 19 },
+  { name: 'Allen', age: 49 },
   { name: 'Nettie', age: 21 },
-  { name: 'Stuart', age: 30 },
+  { name: 'Stuart', age: 17 },
   { name: 'Bill', age: 19 }
 ];
 
-const sortByAge = (arr) => {
-   //your code...
-}
+const sortedByAgeDesc = [...people].sort((a, b) => b.age - a.age);
 
-let output = sortByAge(people)
-console.log(output)
- 
-/* ANSWER should be
- [
-  { name: 'Bill', age: 19 },
-  { name: 'Allen', age: 19 },
-  { name: 'Nettie', age: 21 },
-  { name: 'Candice', age: 25 },
-  { name: 'Tammy', age: 30 },
-  { name: 'Stuart', age: 30 },
-];
-*/
+// longer solution:
+// const sortedByAgeDesc = people.slice().sort((x, y) => {
+//   if (x.age > y.age) return -1;
+//   if (x.age < y.age) return 1;
+//   return 0;
+// })
+
+console.log(sortedByAgeDesc);
+
+// [ { name: 'Allen', age: 49 },
+//   { name: 'Tammy', age: 30 },
+//   { name: 'Candice', age: 25 },
+//   { name: 'Nettie', age: 21 },
+//   { name: 'Bill', age: 19 },
+//   { name: 'Stuart', age: 17 } ]
